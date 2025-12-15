@@ -1,0 +1,231 @@
+-------------------------------------------------
+--         Put your Lua functions here.        --
+--                                             --
+-- Note that you can also use external Scripts --
+-------------------------------------------------
+-- TODO: update inittrain path in Silverymoon
+
+  testtrain = {
+    {48518, "Shalyssa Lurialar"},
+    {48850, "Forell Luckaun"},
+    {48721, "Seipora Rein"}
+  }
+
+  icecrag = {
+    {5804, "commander"},
+    {5735, "lieutenant"},
+    {5739, "lieutenant"},
+    {5769, "lieutenant"},
+    {5684, "lieutenant"},
+    {5833, "lieutenant"},
+    {5842, "lieutenant"},
+    {5780, "lieutenant"},
+    {5850, "lieutenant"},
+    {5752, "artist"},
+    {5772, "sentinel"},
+    {5748, "sentinel"}
+  }
+  smtrain = {
+    {84203, "bankDeposit"},
+    {48882, "Willa O'Greensleeves"},
+    {48873, "Aratha Sul"},
+    {48524, "Lavis Ryl"},
+    {48525, "Elaith Waterstill"},
+    {48518, "Shalyssa Lurialar"},
+    {48850, "Forell Luckaun"},
+    {48721, "Seipora Rein"},
+    {48681, "Corland Deepforge"},
+    {48586, "Ersenas"},
+    {49135, "Ultrumm"},
+--    {49054, "Tathshandra Tyrar"},
+--    {94648, "Otasit"},
+    {49117, "devout priest"},
+    {49036, "Dragor Keenblade"}
+  }
+  ashtrain = {
+    {87415, "bankDeposit"},
+    {87276, "naked woman"},
+    {87263, "gambler"},
+    {87272, "prostitute"},
+    {87411, "Stephan"},
+    {87249, "Ashstone noble"},
+    {87258, "Ashstone noble"},
+    {87270, "bouncer"},
+    {87251, "Ashstone noble"},
+    {87275, "aging prostitute"},
+    {87255, "Ashstone noble"},
+    {87314, "kindly priest"}, 
+    {87253, "Ashstone noble"},
+    {87254, "Ashstone noble"},
+    {87257, "Ashstone noble"}
+  }
+  wdtrain = {
+   -- {13402, "soldier"}, -- 25
+--    {85354, "captain"}, -- 30
+--    {85358, "leader"}, -- 30
+--    {85356, "elite guard"},
+--    {85410, "elite guard"},
+--    {85421, "elite guard"},
+   -- {22222, soldier""}
+    {74746, "leader"},
+    {74746, "soldier"}  
+  }
+  dktrain = {
+    -- The Purple Rothe Commons Room
+    {74687, "sage"},  -- 45
+    {74696, "leader"}, -- leader at 20+
+    {74687, "fat"},  -- 28
+    -- Before the House Zauviir Slave Pen
+    {74696, "soldier"},  -- singles
+    {74698, "bankDeposit"},
+   -- The House Hlaund Barracks  -- 74696
+    {74696, "soldier"}, -- soldier at 15
+    -- Before the House Hlaund Slave Pen
+    {74708, "soldier"}, -- singles
+    {74714, "leader"}, -- singles leader at 20+
+    {74687, "enigmatic"},  -- 45
+    {74696, "soldier"}, -- soldier at 15
+-- The House Rilynt'Tar Barracks  -- 74714
+    {74714, "soldier"}, -- soldier at 15
+    -- The Library of the Lost
+    {74723, "archivist"}, -- 45
+    {74733, "archer"}, --15
+    {74687, "emissary"},  -- 32
+    {74714, "soldier"}, -- soldier at 15
+    -- Before the House Rilynt'Tar Slave Pen
+   {74731, "leader"}, -- singles leader at 20+
+    {74725, "soldier"}, -- singles
+   {74687, "diplomat"},  -- 35
+    -- The House Hlaund Barracks  -- 74696
+    {74731, "soldier"}, -- soldier at 15
+    {74733, "archer"}, --15
+    {74731, "soldier"}, -- soldier at 15
+    -- Archers
+    {74733, "archer"}, --15
+    -- Bar
+    {74738, "warrior"},
+    {74733, "archer"}, --15
+    {74738, "hunter"},
+    {74733, "archer"}, --15
+    {74738, "smuggler"},
+    {74733, "captain"}, --captain at 25
+    {74740, "soldier"}, -- singles
+   -- The House Zauviir Barracks -- 74696
+        {74746, "leader"}, -- leader at 20+
+   {74855,"chef"}, -- 30
+    {74862,"male"}, -- 35    
+    {74746, "soldier"} -- soldier at 15
+    -- Before the House Hlaund Slave Pen
+}
+wgtrain = {
+{825, "BankDeposit"},
+{442, "Elhorn"},
+{441, "Master"},
+{928, "Lord"},
+{511, "Mistress"},
+{615, "Axil"},
+{614, "Rider"},
+{999, "Vigilant"},
+{524, "Sunrise"},
+{523, "High"},
+{437, "Hunn"},
+{929, "Adeena"},
+{933, "Hond"},
+{932, "Priestess"},
+{842, "Syndar"},
+{959, "Lidia"},
+{843, "Holycoin"},
+{436, "Sister"},
+{446, "Abbot"},
+{1158, "Elort"},
+{1157, "Lady"},
+{1000, "Grigor"},
+{474, "Xalass"},
+{473, "Caressor"},
+{512, "Kismet"},
+{1151, "Dread"},
+{327, "Inn"}
+}
+  
+  raventrain = {
+    {85870, "captain"},
+    {85868, "reaver"}, 
+    {85879, "slaver"},
+    {85890, "captain"},
+    {85875, "reaver"}, 
+    {85889, "officer"},
+    {85878, "reaver"},
+    {85885, "knight"},
+    {85871, "reaver"},
+    {85886, "navigator"}
+  }
+  
+  wgtrain={
+{511 ,"Mistress"},
+{615 ,"Axil"},
+{436 ,"Sister"},
+{447 ,"Silios"},
+{843 ,"Holycoin"},
+{842 ,"Syndar"},
+{441 ,"Master"},
+{999 ,"Vigilant"},
+{928 ,"Lord"},
+{843 ,"Holycoin"},
+{842 ,"Syndar"},
+{1158 ,"Elort"},
+{523 ,"High"},
+{442 ,"Elhorn"},
+{1158 ,"Elort"},
+{1157 ,"Lady"},
+{1150 ,"Wave"},
+{441 ,"Master"},
+{446 ,"Abbot"},
+{473 ,"Caressor"},
+{512 ,"Kismet"},
+{932 ,"Priestess"},
+{929 ,"Adeena"},
+{928 ,"Lord"},
+{615 ,"Axil"},
+{614 ,"Rider"},
+{1000 ,"Grigor"},
+{999 ,"Vigilant"},
+{933 ,"Hond"},
+{959 ,"Lidia"},
+{1151 ,"Dread"},
+{1150 ,"Wave"},
+{825 ,"BankDeposit"}
+}
+  
+  
+
+function configureTrain()
+  fwalkQue=false
+
+  -- disable any active triggers prior to enabling
+  expandAlias("@resettrain", false)
+
+  cecho("<green>[Laying train tracks...]\n")
+
+  if trainList ~= nil then
+    if _G[trainList] ~= nil then
+      NyyLIB.smtrainstops = _G[trainList]
+      trainList=nil
+      return
+    end
+  end
+
+  if map:getCurrentZone() == "Ashstone" then
+    NyyLIB.smtrainstops = ashtrain
+  elseif map:getCurrentZone() == "Silverymoon, Gem of the North" then
+    NyyLIB.smtrainstops = smtrain
+  elseif map:getCurrentZone() == "The Spirit Raven" then
+    NyyLIB.smtrainstops = raventrain
+  elseif map:getCurrentZone() == "Northern Waterdeep Main City" then
+    NyyLIB.smtrainstops = wdtrain
+  elseif map:getCurrentZone() == "The Great Harbor of Waterdeep" then
+    NyyLIB.smtrainstops = wdtrain
+  elseif map:getCurrentZone() == "Westgate" then
+    NyyLIB.smtrainstops = wgtrain
+  end
+end
+
