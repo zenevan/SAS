@@ -59,6 +59,37 @@
     {87254, "Ashstone noble"},
     {87257, "Ashstone noble"}
   }
+  cmtrain = {
+   -- {13402, "soldier"}, -- 25
+--    {85354, "captain"}, -- 30
+--    {85358, "leader"}, -- 30
+--    {85356, "elite guard"},
+--    {85410, "elite guard"},
+--    {85421, "elite guard"},
+-- {22222, soldier""}
+    {44315, "orc"},
+    {44317, "orc"},
+    {44314, "orc"},
+    {44317, "orc"},
+    {44318, "orc"},
+    {44319, "orc"},
+    {44320, "orc"},
+    {44321, "orc"},
+    {44324, "orc"},
+    {44325, "orc"},
+    {44326, "orc"},
+    {44322, "orc"},
+    {44333, "bugbear"},
+    {44335, "bugbear"},
+    {44336, "troll"},
+    {44338, "bugbear"},
+    {44343, "bugbear"},
+    {44334, "bugbear"},
+    {44332, "bugbear"},
+    {44344, "bugbear"},
+    {44346, "bugbear"},
+    {44314, "orc"}
+  }
   wdtrain = {
    -- {13402, "soldier"}, -- 25
 --    {85354, "captain"}, -- 30
@@ -67,9 +98,13 @@
 --    {85410, "elite guard"},
 --    {85421, "elite guard"},
    -- {22222, soldier""}
-    {74746, "leader"},
+    {74746, "orc"},
     {74746, "soldier"}  
   }
+  
+  
+  
+  
   dktrain = {
     -- The Purple Rothe Commons Room
     {74687, "sage"},  -- 45
@@ -93,9 +128,9 @@
     {74687, "emissary"},  -- 32
     {74714, "soldier"}, -- soldier at 15
     -- Before the House Rilynt'Tar Slave Pen
-   {74731, "leader"}, -- singles leader at 20+
+    {74731, "leader"}, -- singles leader at 20+
     {74725, "soldier"}, -- singles
-   {74687, "diplomat"},  -- 35
+    {74687, "diplomat"},  -- 35
     -- The House Hlaund Barracks  -- 74696
     {74731, "soldier"}, -- soldier at 15
     {74733, "archer"}, --15
@@ -108,11 +143,11 @@
     {74738, "hunter"},
     {74733, "archer"}, --15
     {74738, "smuggler"},
-    {74733, "captain"}, --captain at 25
     {74740, "soldier"}, -- singles
+    {74733, "captain"}, --captain at 25
    -- The House Zauviir Barracks -- 74696
-        {74746, "leader"}, -- leader at 20+
-   {74855,"chef"}, -- 30
+    {74746, "leader"}, -- leader at 20+
+    {74855,"chef"}, -- 30
     {74862,"male"}, -- 35    
     {74746, "soldier"} -- soldier at 15
     -- Before the House Hlaund Slave Pen
@@ -120,31 +155,31 @@
 
 wgtrain = {
 {825, "BankDeposit"},
-{442, "elhorn"},
+{442, "high"},
 {441, "master"},
-{928, "lord"},
-{511, "mistress"},
-{615, "axil"},
-{614, "rider"},
-{999, "vigilant"},
-{524, "sunrise"},
-{523, "high"},
+{474, "xalass"},
+{436, "sister"},
+{446, "abbot"},
+{473, "caressor"},
 {437, "hunn"},
+{511, "mistress"},
+{512, "kismet"},
+{523, "high"},
+{524, "sunrise"},
+{614, "rider"},
+{615, "axil"},
+{842, "syndar"},
+{843, "holycoin"},
+{928, "lord"},
+{999, "vigilant"},
 {929, "adeena"},
 {933, "hond"},
 {932, "priestess"},
-{842, "syndar"},
 {959, "lidia"},
-{843, "holycoin"},
-{436, "sister"},
-{446, "abbot"},
-{1158, "elort"},
-{1157, "lady"},
 {1000, "grigor"},
-{474, "xalass"},
-{473, "caressor"},
-{512, "kismet"},
 {1151, "dread"},
+{1157, "lady"},
+{1158, "elort"},
 {327, "Inn"}
 }
   
@@ -185,10 +220,12 @@ function configureTrain()
     NyyLIB.smtrainstops = raventrain
   elseif map:getCurrentZone() == "Northern Waterdeep Main City" then
     NyyLIB.smtrainstops = wdtrain
-  elseif map:getCurrentZone() == "The Great Harbor of Waterdeep" then
-    NyyLIB.smtrainstops = wdtrain
+  elseif map:getCurrentZone() == "Dobluth Kyor - Main City" then
+    NyyLIB.smtrainstops = dktrain
   elseif map:getCurrentZone() == "Westgate" then
     NyyLIB.smtrainstops = wgtrain
+  elseif map:getCurrentZone() == "The Comarian Mines" then
+    NyyLIB.smtrainstops = cmtrain   
   end
 end
 
