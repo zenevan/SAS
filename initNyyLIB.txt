@@ -1,0 +1,359 @@
+-------------------------------------------------
+--         Put your Lua functions here.        --
+--                                             --
+-- Note that you can also use external Scripts --
+-------------------------------------------------
+
+NyyLIB = NyyLIB or {}
+
+automem = automem or 0
+  
+function initNyyLIB()
+  
+  echo("\n\n\n")
+
+  cecho([[<green>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO]])
+  cecho("<green>THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE")
+  cecho("<green>AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,")
+  cecho("<green>TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN")
+  cecho("<green>THE SOFTWARE.")
+
+  echo("\n\n\n")
+
+  cecho("<red>[Initializing NyyLIB...]\n")
+
+  -- remove generic_mapper
+  uninstallPackage("generic_mapper")
+  
+  -- disable autoroller if active
+  disableTrigger("RollerTrigger")
+
+  expandAlias("@version", false)
+
+  NyyLIB.homedir = getMudletHomeDir() .. "\\" .. NyyLIB.version .. "\\"
+
+  -- startup time
+  startupTime = getEpoch()
+
+  -- discord
+  setDiscordState("Playing Torilmud")
+
+  -- sets the main windows size to 5 million lines maximum
+  setConsoleBufferSize("main", 5000000, 1000)
+  
+  -- copy fontfile
+  -- The new fontfile doesn't work until mudlet has been restarted
+  
+  local srcPath=mainpath("AvQest.ttf")
+  local dstPath= getMudletHomeDir() .. "\\..\\..\\fonts\\AvQest.ttf"
+
+  --display( srcPath )
+  --display( dstPath )
+
+  local is_file = io.open( dstPath )
+  --display( is_file )
+
+  if not is_file then
+    copyFile(srcPath, dstPath)
+  end
+
+  --local is_file = io.open( dstPath )
+  --display( is_file )
+
+  buttons:init()
+  roomWindow.windowid=nil
+
+  -- create buffers
+  minimapBuffer = createBuffer("minimapBuffer")
+
+  local WindowWidth, WindowHeight = getMainWindowSize()
+
+  splashwindow = Geyser.Label:new({name="splash", x="10%", y="10%", width="50%", height="75%"})
+  splashwindow:setStyleSheet([[border-image: url(]] .. mainpath("splash.png") .. [[)]])
+  tempTimer(6, [[splashwindow:hide()]] )
+
+  -- loading charData table
+  charData:load()
+
+  NyyLIB.leftbuttonarray = {}
+
+  NyyLIB.deadpeople = NyyLIB.deadpeople or {}
+
+  NyyLIB.initgui = false
+  NyyLIB.ticktimer = 60
+
+  if charData:get("style", true) then
+    setStyle()
+  end
+
+  NyyLIB.classes = { "War", "UNK", "Blk", "Pal", "Cle", "Dru", "Sha", "Ctr", 
+    "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran", "Sor", "Wiz" }
+
+  NyyLIB.fullclasslist = { {"Rogue", "Rog"},
+                {"Cleric", "Cle"},
+                {"Paladin", "Pal"},
+                {"Shaman", "Sha"},
+                {"Illusionist", "Ill"},
+                {"Ranger", "Ran"},
+                {"Lich", "Lic"},
+                {"Blackguard", "Blk"},
+                {"Necromancer", "Nec"},
+                {"Battlechanter", "Ctr"},
+                {"Invoker", "Inv"},
+                {"Wizard", "Wiz"},                
+                {"Enchanter", "Enc"},
+                {"Druid", "Dru"},
+                {"Warrior", "War"},
+                {"Elementalist", "Ele"},
+                {"Hexblade", "Hex"},
+                {"Bard", "Bar"},
+                {"Psionicist", "Psi"},
+                {"Sorcerer", "Sor"}
+              }
+
+  NyyLIB.fullracelist = { {"Human", "M"},
+                  {"Barbarian", "M"},
+                  {"Drow Elf", "M"},
+                  {"Moon Elf", "M"},
+                  {"Half-Elf", "M"},
+                  {"Shield Dwarf", "M"},
+                  {"Half-Orc", "M"},
+                  {"Duergar", "M"},
+                  {"Duergar Dwarf", "M"},
+                  {"Gnome", "S"},
+                  {"Halfling", "S"},
+                  {"Ogre", "L"},
+                  {"Troll", "M"},
+                  {"Illithid", "M"},
+                  {"Orc", "M"},
+                  {"Yuan-Ti", "M"}
+                }
+
+  NyyLIB.reversedirs   =   {
+                     n   = "s",
+                     e   = "w",
+                     s   = "n",
+                     w   = "e",
+                     u   = "d",
+                     d   = "u",
+              north = "south",
+              east = "west",
+              south = "north",
+              west = "east",
+              up = "down",
+              down = "up"
+                     }
+
+  NyyLIB.fulldirs = {
+                  n = "north",
+                  e = "east",
+                  s = "south",
+                  w = "west",
+                  u = "up",
+                  d = "down"
+                }
+
+
+  NyyLIB.statuschar=""
+
+
+  NyyLIB.damagelevels = { "Excellent", "Few Scratches", "Small Wounds", "Few Wounds", "nasty wounds", "Pretty Hurt", "Awful" }
+
+  NyyLIB.torescue=""
+
+  NyyLIB.psilag="none"
+
+  loadwholist()
+
+   sqlOpen()
+
+  createconsumabledb()
+  
+  demonnicOnStart()
+
+  setBorder()
+
+  -- enable mapper
+
+  mudlet = mudlet or {}; mudlet.mapper_script = true
+  expandAlias("@map init", false)
+
+  -- only load mapfile if loaded map is < 35000 rooms i.e. not mudlet loaded mapfile
+
+  if map:countRooms() < 35000 then
+    map:loadMap()
+  end
+
+  NyyLIB.initcompleted = true
+
+  registerAnonymousEventHandler("AdjustableContainerReposition", "AdjustableContainerReposition")
+
+  registerAnonymousEventHandler("sysWindowResizeEvent", "GUIScripts")
+  registerAnonymousEventHandler("newRoomEvent", "newRoomEvent")
+
+  expandAlias("@stats reset", false)
+
+  -- load window locations
+  loadWindowLayout()
+
+  cecho ("<red>[NyyLIB initialized.]\n")
+  --echo("Account name: ")
+
+  disableTrigger("minimap display")  
+
+  createGearButtons()
+end
+
+function initFullData()
+  echoDebug("<red>[initFullData called]\n")
+
+  disableTrigger("scribenext")
+  
+  charData:init(whoami(), {}, true)
+
+  charData:init("memcount", 0)
+  charData:init("groupwindow", "split")
+  charData:init("iconbar", "bottom")
+
+  charData:init("statname", "unset")
+
+  if NyyLIB.initgui == false then
+    if NyyLIB.mapwindow == nil then
+      cecho("<red>[error: mapwindow is nil]\n")
+    else
+      map:hide()
+    end
+
+    if whoami() == nil then
+      cecho("<red>[error: whoami() is nil]\n")
+    end
+
+    if whoclass(whoami()) == nil then
+      cecho("<red>[error: whoclass(whoami) is nil]\n")
+    end
+
+    initgui()
+
+    -- call class initialization script (buttons)
+
+    initClass()
+
+    -- call custom initaliziation script 'initCustom()' if it exists
+
+    if _G["initCustom"] ~= nil then
+      _G["initCustom"]()
+    else
+      echoDebug("\n<red>[Custom script initCustom() does not exist]\n")
+    end
+
+    NyyLIB.initgui = true
+  
+    --bugfix bandaid mudlet 4.8.0
+    selectGroupWindows()
+  end
+end
+
+-- class initialization script (buttons)
+
+function initClass()
+  -- disable all class aliases
+  
+  local nx=0
+
+  for nx=1, table.size(NyyLIB.classes), 1 do
+    disableAlias(NyyLIB.classes[nx] .. subClass)
+  end
+  disableAlias("Bard")
+  
+  -- enable my class aliases
+  enableAlias(whoclass() .. subClass)
+ 
+  if whoclass() == "Ctr" or whoclass() == "Bar" then
+    enableAlias("Bard")
+  end
+ 
+   buttons:hide()
+  
+  baseButtons()
+  
+  local fnInit="init" .. whoclass() .. subClass
+
+  if _G[fnInit] ~= nil then
+    _G[fnInit]()
+  else
+    echoDebug("\n<red>[Class script " .. fnInit .. " does not exist]\n")
+  end
+end
+
+function firstPrompt()
+  -- Initialization trigger on reconnect to toril.
+
+  
+  --enable logging
+  startLogging(false)
+  startLogging(true)
+
+  -- clear noreconnect flag
+  noreconnect=nil
+
+  -- Enable single letter aliases
+  enableAlias("movement commands")
+  --enableAlias("p")
+  --enableAlias("g")
+  enableAlias("l (look)")
+
+  -- reset any previously queued spells / commands
+  mud.varsendqueue={}
+  spell:clear()
+
+  NyyLIB.initgui=false
+
+  -- erase current value of assassinate timer
+  timer:set("assassinatetimer", nil)
+
+  setHide(false)
+  group:send(false)
+  sendFollowers(false)
+
+  if charData:get("winMinimap") then
+    enableTrigger("tog minimap")
+    mud:send("tog minimap", false)
+  end
+
+  mud:send("TOG newprompt", false)
+  mud:send("PROMPT options newline", false)
+  mud:send("TOG smartprompt", false)
+  --mud:send("DISPLAY enemypos", false)
+  --mud:send("DISPLAY position", false)
+  --mud:send("DISPLAY slots", false)
+  mud:send("CLASS sub", false)
+  mud:send("ATT", false)
+  mud:send("SC", false)
+  mud:send("EQUIP", false)
+  group:send()
+  sendStatus()
+  mud:send("EXP", true)
+  mud:send("CONSENT", false)
+
+  -- TODO: temp timer display combo
+  tempTimer(5, [[if checkMask("hex") and prompt:get("combo") == "" then mud:send("display combo") end]])
+  tempTimer(5, [[if checkMask("sor") and prompt:get("combo") == "" then mud:send("display combo") end]])
+
+  local assocchar = charData:get("assocchar", true)
+
+  if assocchar ~= "" then
+    mud:send("assoc chat " .. assocchar, false )
+    mud:send("storage access " .. assocchar, false )
+  end
+
+
+  tempTimer(1.5, [[look:send()]])
+
+  tempTimer(4, [[expandAlias("@resettrain", false)]])
+
+  -- set map room to nil
+
+  map:setRoom(nil)
+
+  centerview(1)
+ end
