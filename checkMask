@@ -1,0 +1,115 @@
+-------------------------------------------------
+--         Put your Lua functions here.        --
+--                                             --
+-- Note that you can also use external Scripts --
+-------------------------------------------------
+
+-- The checkMask function returns true/false if a character is a member of a set of classes.
+
+-- checkMask(xmask, xname)
+--   xmask - name of the mask to use
+-- xname - name to check, or nil (whoami)
+-- Returns true if xname's class is a member of the set
+
+-- Example: Adud is a warrior
+
+-- if checkMask("rogue", "Adud") then
+--    display("This won't happen because Adud isn't a rogue")
+-- end
+
+-- Not including a character name means the character logged in will be used
+
+-- Example: Nyyrazzilyss (an illithid) is currently logged in
+
+-- if checkMask("psi") then
+--    display("Nyyrazzilyss is a psi")
+-- end
+
+  masks = {
+    classes = { "War", "Blk", "Pal", "UNK", "Cle", "Dru", "Sha", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran", "Sor", "Wiz" },
+    noPsi = { "War", "Blk", "Pal", "Cle", "Dru", "Sha", "Ctr", "Bar", "Enc", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran", "Sor", "Wiz" },
+    nopriest = { "War", "Blk", "Pal", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Dir", "Ran", "Hex", "Sor" },
+    nocleric = { "War", "Blk", "Pal", "Dru", "Sha", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran", "Sor", "Wiz" },
+    psi = { "Psi" },
+    enc = { "Enc" },
+    war = { "War" },
+    cle = { "Cle" },
+    sha = { "Sha" },
+    rog = { "Rog" },
+    ill = { "Ill" },
+    inv = { "Inv" },
+    dru = { "Dru" },
+    bar = { "Bar" },
+    ctr = { "Ctr" },
+    ran = { "Ran" },
+    ele = { "Ele" },
+    pal = { "Pal" },
+    blk = { "Blk" },
+    lic = { "Lic" },
+    nec = { "Nec" },
+    dir = { "Dir" },
+    hex = { "Hex" },
+    sor = { "Sor" },
+    wiz = { "Wiz" },
+    
+    all = { "War", "Blk", "Pal", "Cle", "Dru", "Sha", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran", "Sor", "Wiz" },
+    self = { "Enc", "Sha" },
+    rangerhex = { "Ran", "Hex"},
+    petrescue = { "Cle", "Dru", "Sha", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Sor" },
+    traintanks = {"War", "Pal", "Blk", "Ran", "Hex", "Bar", "Ctr"},
+    warrior = {"War", "Pal", "Blk", "Hex" }, -- temporarily added ranger, rogue
+    fighter = {"War", "Pal", "Blk", "Ran", "Hex" },
+    hitter = { "Rog", "Hex", "Ran", "Blk", "Pal" },
+    hitterToRescue = { "Rog", "Hex", "Ran" },
+    singer = {"Bar", "Ctr"},
+    autobless = {"Bar", "Ctr"},
+    autohide = {"Psi", "Rog", "Ran"},
+    hitterSinger = { "War", "Rog", "Hex", "Ran", "Blk", "Pal", "Bar", "Ctr"},
+    displace = { "Cle", "Dru", "Sha", "Ctr", "Bar", "Enc", "Psi", "Inv", "Lic", "Ill", "Ele", "Nec", "Rog", "Hex", "Ran" },
+    rightWindow = {"UNK", "War", "Blk", "Pal", "Bar", "Ctr", "Dir", "Hex", "Ran", "Rog"},
+    caster = {"Dru", "Enc", "Inv", "Lic", "Nec", "Ill", "Ele", "Cle", "Sha", "Sor" },
+    mage = {"Enc", "Inv", "Lic", "Nec", "Ill", "Ele", "Sor" },
+    noMemCaster= {"Hex", "Sor", "Bar", "Ctr"},
+    casterGlobe= {"Enc", "Nec", "Lic"},
+    casterSinger = {"Dru", "Enc", "Inv", "Lic", "Nec", "Ill", "Ele", "Cle", "Sha", "Bar", "Ctr" },
+    casterPsi = {"Psi", "Dru", "Enc", "Inv", "Lic", "Nec", "Ill", "Ele", "Cle", "Sha" },
+    casterPsiSinger = {"Psi", "Dru", "Enc", "Inv", "Lic", "Nec", "Ill", "Ele", "Cle", "Sha", "Bar", "Ctr" },
+    statHitter = {"War", "Pal", "Blk", "Ran", "Dir", "Bar", "Ctr", "Rog" },
+    priest = {"Sha", "Dru", "Ctr", "Cle" },
+    pray = {"Sha", "Dru", "Cle" },
+    nonPriestCaster = { "ZZZ" },
+    rogue = {"Rog", "Bar", "Ctr"},
+    petRescue = { "Psi", "Cle", "Enc", "Dru", "Lic", "Sha", "Inv", "Ill", "Ele",   "Nec", "Bar", "Ctr", "Rog", "Ran", "Hex", "Sor" },
+    haster = { "Enc", "Nec", "Ele", "Lic" },
+    summonmount = { "Dir"},
+    mountedCombat = { "Dir"},
+    missile = { "Sha", "Ele", "Enc", "Nec", "Inv", "Lic", "Ill", "Dru" },
+    hlarea = { "Cle", "Sha", "Ele", "Enc", "Nec", "Inv", "Lic", "Ill", "Dru" },
+    ffire = { "Enc", "Ill", "Inv", "Dru", "Sha"},
+    stoner = { "Sha", "Ele", "Enc" },
+    venomer = { "Rog", "Blk" },
+    dmgundead = { "Cle", "Nec", "Lic" },
+    necros = { "Lic", "Nec" },
+    powerCaster = { "Blk", "Pal", "Ran", "Sor"},
+      }
+
+function checkMask(xmask, xname)
+  local classname
+
+  if xname == nil then
+    xname = whoami()
+  end
+
+  classname = whoclass(xname) or "UNK"
+
+  if masks[xmask] == nil then
+    echoDebug("<red>[Error: mask " .. xmask .. " does not exist]\n")
+    return
+  end
+
+  if table.contains( masks[xmask], classname ) then
+    return(true)
+  end
+
+  return(false)
+end
