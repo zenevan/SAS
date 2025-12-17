@@ -154,33 +154,45 @@
 }
 
 wgtrain = {
-{825, "BankDeposit"},
 --{442, "high"},--10
-{441, "master"},----14
-{474, "xalass"},--19
 --{436, "sister"},--11
-{446, "abbot"},--13
-{473, "caressor"},--12
-{437, "hunn"},
-{511, "mistress"},--7
-{512, "kismet"},--119
-{523, "high"},
-{524, "sunrise"},
-{614, "rider"},
-{615, "axil"},
-{842, "syndar"},
-{843, "holycoin"},
-{928, "lord"},
+--{928, "lord"},--7
 --{999, "vigilant"}, ---9
-{929, "adeena"}, --19
-{933, "hond"},
+--{842, "syndar"},--10
 --{932, "priestess"}, --7
+--{441, "master"},----14
+--{511, "mistress"},--7
+--{437, "hunn"},  --13
+--{523, "high"},--10
+{327, "Inn"},
+{446, "abbot"},--13                                                                                                                              
+{473, "caressor"},--12--
+{474, "xalass"},--19
+{512, "kismet"},--19
+{524, "sunrise"},--19
+{614, "rider"},--12
+{615, "axil"},--19
+{843, "holycoin"},--19
+{929, "adeena"}, --19
+{933, "hond"},--19
 {959, "lidia"}, --19
 {1000, "grigor"},--19
 {1151, "dread"},--19
-{1157, "lady"},
-{1158, "elort"},
-{327, "Inn"}
+{1158, "elort"},--
+{1151, "dread"},--19
+{1000, "grigor"},--19
+{959, "lidia"}, --19
+{933, "hond"},--19
+{929, "adeena"}, --19
+{843, "holycoin"},--19
+{615, "axil"},--19
+{614, "rider"},--12
+{524, "sunrise"},--19
+{512, "kismet"},--19
+{474, "xalass"},--19
+{473, "caressor"},--12--
+{446, "abbot"},--13                                                                                                                              
+{825, "BankDeposit"}
 }
   --
   raventrain = {
