@@ -17,8 +17,14 @@ but the function name is right, just replace the code.
 @map alias https://github.com/zenevan/SAS/blob/main/map.txt -- updates maps
 init files: https://github.com/zenevan/SAS/blob/main/initNyyLIB.txt  --fixes rescue and wizards
 train config: https://github.com/zenevan/SAS/blob/main/setupTrain%20config.txt -- adds trains
+sqldb update https://github.com/zenevan/SAS/blob/main/sqlfunctions.txt
+data for sql lookup drop in root of your profile
 
-run
+short: https://github.com/zenevan/SAS/blob/main/short_stats.txt
+long: https://github.com/zenevan/SAS/blob/main/long_stats.txt
+
 @map updateok
+
+lua loadItemDatabase()
 
 connect to mud, enjoy
