@@ -35,6 +35,8 @@ short: https://github.com/zenevan/SAS/blob/main/short_stats.txt
 long: https://github.com/zenevan/SAS/blob/main/long_stats.txt
 
 @map updateok
+This will likely take 5 minutes, it seems locked up
+wait for for it.
 
 lua loadItemDatabase()
 
