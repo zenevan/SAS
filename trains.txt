@@ -154,35 +154,47 @@
 }
 
 wgtrain = {
-{825, "BankDeposit"},
-{442, "high"},
-{441, "master"},
-{474, "xalass"},
-{436, "sister"},
-{446, "abbot"},
-{473, "caressor"},
-{437, "hunn"},
-{511, "mistress"},
-{512, "kismet"},
-{523, "high"},
-{524, "sunrise"},
-{614, "rider"},
-{615, "axil"},
-{842, "syndar"},
-{843, "holycoin"},
-{928, "lord"},
-{999, "vigilant"},
-{929, "adeena"},
-{933, "hond"},
-{932, "priestess"},
-{959, "lidia"},
-{1000, "grigor"},
-{1151, "dread"},
-{1157, "lady"},
-{1158, "elort"},
-{327, "Inn"}
+--{442, "high"},--10
+--{436, "sister"},--11
+--{928, "lord"},--7
+--{999, "vigilant"}, ---9
+--{842, "syndar"},--10
+--{932, "priestess"}, --7
+--{441, "master"},----14
+--{511, "mistress"},--7
+--{437, "hunn"},  --13
+--{523, "high"},--10
+{327, "Inn"},
+{446, "abbot"},--13                                                                                                                              
+{473, "caressor"},--12--
+{474, "xalass"},--19
+{512, "kismet"},--19
+{524, "sunrise"},--19
+{614, "rider"},--12
+{615, "axil"},--19
+{843, "holycoin"},--19
+{929, "adeena"}, --19
+{933, "hond"},--19
+{959, "lidia"}, --19
+{1000, "grigor"},--19
+{1151, "dread"},--19
+{1158, "elort"},--
+{1151, "dread"},--19
+{1000, "grigor"},--19
+{959, "lidia"}, --19
+{933, "hond"},--19
+{929, "adeena"}, --19
+{843, "holycoin"},--19
+{615, "axil"},--19
+{614, "rider"},--12
+{524, "sunrise"},--19
+{512, "kismet"},--19
+{474, "xalass"},--19
+{473, "caressor"},--12--
+{446, "abbot"},--13                                                                                                                              
+{825, "BankDeposit"}
 }
-  
+  --
   raventrain = {
     {85870, "captain"},
     {85868, "reaver"}, 
@@ -194,7 +206,38 @@ wgtrain = {
     {85885, "knight"},
     {85871, "reaver"},
     {85886, "navigator"}
-  } 
+  }
+
+  ghtrain = {
+    {41974, "young"},
+    {41975, "large"},
+    {41979, "young"},
+    {41964, "young"},
+    {41974, "large"},
+    {41979, "large"},
+    {41966, "young"},
+    {41973, "large"},
+    {41980, "young"},
+    {41979, "young"},
+    {41975, "large"},
+    {41964, "young"},
+    {41979, "large"},
+    {41965, "large"},
+    {41978, "young"},
+    {41966, "large"},
+    {41978, "large"},
+    {41975, "young"},
+    {41964, "large"},
+    {41965, "young"},
+    {41966, "large"},
+    {41973, "young"},
+    {41980, "large"},
+    {41975, "young"},
+    {41964, "large"},
+    {41965, "young"},
+    {41978, "large"},
+    {41979, "large"}
+  }   
 
 function configureTrain()
   fwalkQue=false
@@ -225,7 +268,10 @@ function configureTrain()
   elseif map:getCurrentZone() == "Westgate" then
     NyyLIB.smtrainstops = wgtrain
   elseif map:getCurrentZone() == "The Comarian Mines" then
-    NyyLIB.smtrainstops = cmtrain   
+    NyyLIB.smtrainstops = cmtrain
+  elseif map:getCurrentZone() == "Ghore - City of Trolls" then
+    NyyLIB.smtrainstops = ghtrain
+       
   end
 end
 
