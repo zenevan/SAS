@@ -1,9 +1,9 @@
 @@ Download This: https://github.com/Nyyrazzilyss/NyyLIB/archive/refs/heads/master.zip
 extract and copy
 
-copy this: C:\Users\youruser\.config\mudlet\profiles\Torilmud\NyyLIB-master.zip\NyyLIB-master\
+copy this: C:\Users\youruser\\.config\mudlet\profiles\Torilmud\NyyLIB-master.zip\NyyLIB-master\
 to
-C:\Users\youruser\.config\mudlet\profiles\Torilmud\
+C:\Users\youruser\\.config\mudlet\profiles\Torilmud\
 EVERYTHING
 
 launch mudlet in offline mod
