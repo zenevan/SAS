@@ -3,7 +3,7 @@ extract and copy
 
 copy this: C:\Users\jason\.config\mudlet\profiles\Torilmud\NyyLIB-master.zip\NyyLIB-master\
 to
-C:\Users\zenev\.config\mudlet\profiles\Torilmud\
+C:\Users\youruser\.config\mudlet\profiles\Torilmud\
 EVERYTHING
 
 launch mudlet in offline mod
