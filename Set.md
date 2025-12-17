@@ -1,7 +1,7 @@
 Download and Install Mudlet: https://www.mudlet.org/download/46/
 Delete all of the profiles in there under profiles: C:\Users\youruser\\.config\mudlet\profiles\
 Create a new Profile named Torilmud
-server: torilmud.org
+server: torilmud.org or torilmud.com
 port: 9999
 navigate to options, put in username and password
 check connect auomatically
