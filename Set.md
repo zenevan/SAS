@@ -6,7 +6,7 @@ to
 C:\Users\youruser\\.config\mudlet\profiles\Torilmud\
 EVERYTHING
 
-launch mudlet in offline mod
+launch mudlet in offline mode
 
 use package manager to load:NyyLIB013dev.mpackage with package manager
 this will be in the directory you copied.
