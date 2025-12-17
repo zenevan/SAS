@@ -1,3 +1,11 @@
+Download and Install Mudlet: https://www.mudlet.org/download/46/
+Delete all of the profiles in there under profiles: C:\Users\youruser\\.config\mudlet\profiles\
+Create a new Profile named Torilmud
+server: torilmud.org
+port: 9999
+navigate to options, put in username and password
+check connect auomatically
+
 @@ Download This: https://github.com/Nyyrazzilyss/NyyLIB/archive/refs/heads/master.zip
 extract and copy
 
@@ -7,6 +15,7 @@ C:\Users\youruser\\.config\mudlet\profiles\Torilmud\
 EVERYTHING
 
 launch mudlet in offline mode
+@set reconnect 1 or to whatever number u wanna focus on
 
 use package manager to load:NyyLIB013dev.mpackage with package manager
 this will be in the directory you copied.
@@ -19,6 +28,8 @@ init files: https://github.com/zenevan/SAS/blob/main/initNyyLIB.txt  --fixes res
 train config: https://github.com/zenevan/SAS/blob/main/setupTrain%20config.txt -- adds trains
 sqldb update https://github.com/zenevan/SAS/blob/main/sqlfunctions.txt
 data for sql lookup drop in root of your profile
+
+right click these and save in root: C:\Users\youruser\\.config\mudlet\profiles\Torilmud\
 
 short: https://github.com/zenevan/SAS/blob/main/short_stats.txt
 long: https://github.com/zenevan/SAS/blob/main/long_stats.txt
