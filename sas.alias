@@ -1,4 +1,4 @@
-send(" {{gradient saddlebrown goldenrod}}Sojourn{{/}} {{gradient black darkred}}Assassination{{/}} {{gradient darkred red}}Squad{{/}}")
+send("color {{gradient saddlebrown goldenrod}}Sojourn{{/}} {{gradient black darkred}}Assassination{{/}} {{gradient darkred red}}Squad{{/}}")
 send("color {{gradient tan burlywood}}Sojourn{{/}} {{gradient black #1a0000}}Assassi{{/}}{{gradient #1a0000 #330000}}nation{{/}} {{gradient #4d0000 red}}Squad{{/}}")
 send("color {{base goldenrod}}{{alt darken(goldenrod,20) lighten(saddlebrown,10) 1}}Sojourn{{/}} {{gradient #000000 #660000}}Assassination{{/}} {{gradient #990000 #ff1a1a}}Squad{{/}}")
 send("color {{gradient sienna wheat}}Sojourn{{/}} {{gradient #050505 #1a0000}}Assas{{/}}{{gradient #1a0000 #4d0000}}sina{{/}}{{gradient #4d0000 #800000}}tion {{/}}{{gradient #b30000 #ff0000}}Squad{{/}}")
