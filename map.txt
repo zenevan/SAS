@@ -34,21 +34,21 @@ if matches[2] == "score" then
 
     if zoneid ~= nil then
       -- first appearance of room in area
-      if maprooms[NyyLIB.areaTable[zoneid]] == nil then
+     if maprooms[NyyLIB.areaTable[zoneid]] == nil then
         maprooms[NyyLIB.areaTable[zoneid]] = {0,0,0}
-      end
+     end
 
-      if internalid == -1 then
+      --if internalid == -1 then
         -- undiscovered room
         maprooms[NyyLIB.areaTable[zoneid]][2] = maprooms[NyyLIB.areaTable[zoneid]][2] + 1
-      else
+      --else
         -- discovered room
         maprooms[NyyLIB.areaTable[zoneid]][1] = maprooms[NyyLIB.areaTable[zoneid]][1] + 1
       
         -- room is coloured
         if env ~= 271 then
           maprooms[NyyLIB.areaTable[zoneid]][3] = maprooms[NyyLIB.areaTable[zoneid]][3] + 1
-        end
+        --end
       end
     else
       -- echo("nil room " .. roomid .. "\n")
@@ -156,8 +156,14 @@ if matches[2] == "info" then
       if maprooms[NyyLIB.areaTable[zoneid]] == nil then
         maprooms[NyyLIB.areaTable[zoneid]] = {0,0}
       end
+
+      if internalid == -1 then
+        -- undiscovered room
+        maprooms[NyyLIB.areaTable[zoneid]][2] = maprooms[NyyLIB.areaTable[zoneid]][2] + 1
+      else
         -- discovered room
         maprooms[NyyLIB.areaTable[zoneid]][1] = maprooms[NyyLIB.areaTable[zoneid]][1] + 1
+      end
     else
       -- echo("nil room " .. roomid .. "\n")
     end
@@ -192,13 +198,18 @@ if matches[2] == "updateok" then
   -- check existing toril.map file
   for roomid, roomname in pairs(fullmap) do
     local internalid = getRoomArea(roomid)
-    mapdata[#mapdata+1]=roomid
+
+    --if internalid ~= -1 and internalid ~= nil then
+      mapdata[#mapdata+1]=roomid
+    --end
   end
 
   loadMap(mainpath("toril.map"))
 
   for nx=1,#mapdata,1 do
+    --if mapdata[nx] ~= 1 then
       unhideRoom(mapdata[nx])
+    --end
   end
 
   expandAlias("@map save", false)
